@@ -1,0 +1,134 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <title>Open Banking System</title>
+  </head>
+  <body>
+    <!-- <h1>Hello, world!</h1> -->
+    <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #e3f2fd;">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Open Bank System</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Contact us</a>
+        </li>
+        
+        
+      </ul>
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-success" type="submit">Search</button>
+      </form>
+    </div>
+  </div>
+</nav>
+    <div class="container">
+    <!-- <form action="/myacc/" method="post">{% csrf_token %}csrf token is used to check whether the action in form tag refers to a view in our website or not. Doesnt refer to any other outside link/malicious site. Cross-Site Request Forgery     -->
+  
+      <!-- <div class="form-group">
+        <label for="exampleFormControlTextarea1">Enter Email</label>
+        <textarea name='email' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> -->
+        <!-- <label>Checkin Date</label>
+        <input name='cin' type="Date">
+        <label>Checkout Date</label>
+        <input name='cout' type="Date"> -->
+      <!-- </div>
+      <button type="submit" class="btn btn-dark">View Account Details</button>
+    </form> --> 
+    <h1>Name : {{user.firstname}} {{user.lastname}}</h1>
+    <p>Email : {{user.email}}</p>
+    <h4>Your Bank Accounts</h4>
+    <table class='table'>
+      <thead>
+        <tr>
+          <th scope='col'>Bank Name</th>
+          <th scope="col">Account No.</th>
+          <th scope="col">Branch</th>
+          <th scope="col">Balance</th>
+        </tr>
+      </thead>
+      <tbody>
+        {% for i in accounts %}
+          <tr>
+          <td>{{i.bank.bank_name}} </td>
+          <td>{{i.accno}} </td>
+          <td>{{i.branch}}</td>
+          <td>{{i.balance}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+    <h4>Transaction Details</h4>
+    <table class="table">
+      <thead>
+        <tr>
+        <th class='table-success' scope="col">Bank Name</th>
+        <th class='table-success' scope="col">Account No.</th>
+        <th class='table-success' scope="col">Branch</th>
+        <th class='table-success' scope="col">Category</th>
+        <th class='table-success' scope="col">Description</th>
+        <th class='table-success' scope="col">Date</th>
+        <th class='table-success' scope="col">Price</th>
+      </tr>
+    </thead>
+      <tbody>
+    {% for i in txn %}
+    <tr>
+      <td class='table-success' >{{i.acc.bank.bank_name}} </td>
+      <td class='table-success' >{{i.acc.accno}} </td>
+      <td class='table-success' >{{i.acc.branch}}</td>
+      <td class='table-success' >{{i.category_name}}</td>
+      <td class='table-success' >{{i.desc}}</td>
+      <td class='table-success' > {{i.date}} </td>
+      <td class='table-success' >{{i.price}}</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+    <h4>Spending</h4>
+    <img src='../../media/module1/images/spending.png'/>
+    <h4>Month Wise Spending</h4>
+    <img src='../../media/module1/images/barplot.png'/>
+    <h4> Yearly Analysis</h4>
+    <img src='../../media/module1/images/barplot2.png'/>
+    
+
+    <div class="card" style="width: 18rem; background-color: #e3f2fd;">
+  <div class="card-body">
+    <h5 class="card-title">Recommended Financial Plan</h5>
+    <h6 class="card-subtitle mb-2 text-muted">{{inv}}</h6>
+    <p class="card-text">{{msg}}</p>
+  </div>
+</div>
+
+
+    <!--<form action="myacc/" method="post">{% csrf_token %}csrf token is used to check whether the action in form tag refers to a view in our website or not. Doesnt refer to any other outside link/malicious site. Cross-Site Request Forgery     
+      <button type="submit" class="btn btn-dark">View Spendings Details</button>
+    </form>-->
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+
+    <!-- Option 2: Separate Popper and Bootstrap JS -->
+    <!--
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js" integrity="sha384-7+zCNj/IqJ95wo16oMtfsKbZ9ccEh31eOz1HGyDuCQ6wgnyJNSYdrPa03rtR1zdB" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
+    -->
+  </body>
+</html>
