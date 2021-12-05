@@ -10,7 +10,16 @@ def index(request):
 	return render(request,'index.html')
 def myacc(request):
 	e=request.POST.get('email')
-	user=User.objects.filter(email=e)[0]
+	pwd=request.POST.get('password')
+	user=User.objects.filter(email=e)
+	if len(user)==0:
+		p={'msg':'Please enter registered email id'}
+		return render(request,'notfound.html',p)
+	else:
+		user=user[0]
+		if user.password!=pwd:
+			p={'msg':'Please enter correct credentials'}
+			return render(request,'notfound.html',p)
 	a=[]
 	x=Account.objects.all()
 	for i in x:

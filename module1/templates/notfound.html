@@ -37,21 +37,9 @@
   </div>
 </nav>
     <div class="container">
-    <form action="myacc/" method="post">{% csrf_token %}<!--csrf token is used to check whether the action in form tag refers to a view in our website or not. Doesnt refer to any other outside link/malicious site. Cross-Site Request Forgery     -->
-  
-      <!-- <div class="form-group">
-        <label for="exampleFormControlTextarea1">Enter Email</label>
-        <textarea name='email' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-      </div> -->
-      <div class="mb-3">
-  <label for="exampleFormControlInput1" class="form-label">Email address</label>
-  <textarea name='email' class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-  <label for="exampleFormControlInput1" class="form-label">Password</label>
-  <input name='password' class="form-control" type="password"/>
-</div>
-      <button type="submit" class="btn btn-warning">View Account Details</button>
-    </form>
-</div>
+      <h1>{{msg}}</h1>
+    </div>
+
 
     <!-- Optional JavaScript; choose one of the two! -->
 
